@@ -3,22 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Page</title>
+    <title>Interactive Plotly Graphs</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-    <h1>Welcome to My GitHub Page</h1>
-    <div id="plotly-chart" style="width:600px;height:400px;"></div>
+    <h1>Interactive Plotly Graphs</h1>
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="about.html">About</a>
+    </nav>
+
+    <form id="dataForm">
+        <label for="xValues">X Values (comma separated):</label><br>
+        <input type="text" id="xValues" name="xValues"><br><br>
+        
+        <label for="yValues">Y Values (comma separated):</label><br>
+        <input type="text" id="yValues" name="yValues"><br><br>
+
+        <label for="graphType">Graph Type:</label><br>
+        <select id="graphType" name="graphType">
+            <option value="scatter">Scatter</option>
+            <option value="bar">Bar</option>
+            <option value="line">Line</option>
+        </select><br><br>
+
+        <input type="button" value="Generate Graph" onclick="generateGraph()">
+    </form>
+
+    <div id="plotly-chart" style="width:100%;height:500px;"></div>
+
     <script>
-        const trace1 = {
-            x: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-            y: [10, 15, 13, 17, 21],
-            type: 'scatter'
-        };
+        function generateGraph() {
+            // Получаем значения, введенные пользователем
+            const xValues = document.getElementById('xValues').value.split(',').map(item => item.trim());
+            const yValues = document.getElementById('yValues').value.split(',').map(item => parseFloat(item.trim()));
+            const graphType = document.getElementById('graphType').value;
 
-        const data = [trace1];
+            // Проверка данных
+            if (xValues.length !== yValues.length) {
+                alert('X и Y значения должны быть одинаковой длины!');
+                return;
+            }
 
-        Plotly.newPlot('plotly-chart', data);
+            // Создание графика
+            const trace = {
+                x: xValues,
+                y: yValues,
+                type: graphType
+            };
+
+            const data = [trace];
+
+            const layout = {
+                title: 'User Generated Graph',
+                xaxis: {
+                    title: 'X Axis'
+                },
+                yaxis: {
+                    title: 'Y Axis'
+                }
+            };
+
+            Plotly.newPlot('plotly-chart', data, layout);
+        }
     </script>
 </body>
 </html>
