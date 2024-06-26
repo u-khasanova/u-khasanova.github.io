@@ -3,24 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Интерактивные графики с Plotly</title>
+    <title>Interactive Plotly Graphs</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-    <h1>Интерактивные графики с Plotly</h1>
-    
+    <h1>Interactive Plotly Graphs</h1>
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="about.html">About</a>
+    </nav>
+
     <form id="dataForm">
-        <label for="xValues">Значения Х (через запятую):</label><br>
+        <label for="xValues">X Values (comma separated):</label><br>
         <input type="text" id="xValues" name="xValues"><br><br>
         
-        <label for="yValues">Значения Y (через запятую):</label><br>
+        <label for="yValues">Y Values (comma separated):</label><br>
         <input type="text" id="yValues" name="yValues"><br><br>
 
-        <label for="graphType">Тип графика:</label><br>
+        <label for="graphType">Graph Type:</label><br>
         <select id="graphType" name="graphType">
-            <option value="scatter">Диаграмма рассеивания</option>
-            <option value="bar">Столбчатая диаграмма</option>
-            <option value="line">Линейный график</option>
+            <option value="scatter">Scatter</option>
+            <option value="bar">Bar</option>
+            <option value="line">Line</option>
         </select><br><br>
 
         <input type="button" value="Generate Graph" onclick="generateGraph()">
