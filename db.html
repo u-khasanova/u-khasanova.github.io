@@ -11,23 +11,6 @@
         <a href="index.html">Home</a>
     </nav>
     <div id="data"></div>
-
-    <script>
-        async function fetchData() {
-            const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRSBOV4f0h-LeliVjUgJrt3bDqn5oxw485OUE65bngZ0sZgweh6POJovw29p8PrQ7Vt1ttZW1pvwdv8/pubhtml?gid=800693342&single=true');
-            const data = await response.json();
-            const entries = data.feed.entry;
-            let content = '<table border="1"><tr><th>ID</th><th>Name</th><th>Value</th></tr>';
-
-            for (let i = 3; i < entries.length; i += 3) {
-                content += `<tr><td>${entries[i].gs$cell.$t}</td><td>${entries[i + 1].gs$cell.$t}</td><td>${entries[i + 2].gs$cell.$t}</td></tr>`;
-            }
-
-            content += '</table>';
-            document.getElementById('data').innerHTML = content;
-        }
-
-        fetchData();
-    </script>
+    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRSBOV4f0h-LeliVjUgJrt3bDqn5oxw485OUE65bngZ0sZgweh6POJovw29p8PrQ7Vt1ttZW1pvwdv8/pubhtml?gid=800693342&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
 </body>
 </html>
