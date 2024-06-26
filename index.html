@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My GitHub Page</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Welcome to My GitHub Page</h1>
+    <div id="plotly-chart" style="width:600px;height:400px;"></div>
+    <script>
+        const trace1 = {
+            x: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+            y: [10, 15, 13, 17, 21],
+            type: 'scatter'
+        };
+
+        const data = [trace1];
+
+        Plotly.newPlot('plotly-chart', data);
+    </script>
+</body>
+</html>
